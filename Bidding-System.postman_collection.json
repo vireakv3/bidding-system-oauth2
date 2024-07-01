@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "7d4d028e-22fd-42ea-b9de-a36b76755756",
+		"name": "Bidding-System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14456641"
+	},
+	"item": [
+		{
+			"name": "2. backoffice: for client",
+			"item": [
+				{
+					"name": "post item",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomProductName}}\",\r\n    \"price\":\"{{$randomPrice}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2024/api/v1/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2024",
+							"path": [
+								"api",
+								"v1",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bid of item",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:2024/api/v1/items/1/bids",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2024",
+							"path": [
+								"api",
+								"v1",
+								"items",
+								"1",
+								"bids"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find item belong to auth user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomProductName}}\",\r\n    \"price\":\"{{$randomPrice}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2024/api/v1/items",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2024",
+							"path": [
+								"api",
+								"v1",
+								"items"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find item by specify user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"{{$randomProductName}}\",\r\n    \"price\":\"{{$randomPrice}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:2024/api/v1/items/user/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "2024",
+							"path": [
+								"api",
+								"v1",
+								"items",
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "get authorization code",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://auth-server:9000/oauth2/authorize?response_type=code&client_id=client-id&scope=openid&redirect_uri=https://test.salesforce.com/login/aouth2/code/reg-client&code_challenge=cV0uYorzum0Q0pp5haiK2DyuVo4b2m7p1WliPp0tnY8&code_challenge_method=S256",
+							"protocol": "http",
+							"host": [
+								"auth-server"
+							],
+							"port": "9000",
+							"path": [
+								"oauth2",
+								"authorize"
+							],
+							"query": [
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "client_id",
+									"value": "client-id"
+								},
+								{
+									"key": "scope",
+									"value": "openid"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://test.salesforce.com/login/aouth2/code/reg-client"
+								},
+								{
+									"key": "code_challenge",
+									"value": "cV0uYorzum0Q0pp5haiK2DyuVo4b2m7p1WliPp0tnY8"
+								},
+								{
+									"key": "code_challenge_method",
+									"value": "S256"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "code craber",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://test.salesforce.com/login/aouth2/code/reg-client?code=uofzL228225E0X0y7mVL-BU2xt9TRNE_lqPaj_uadXSMZuBvJ_DKFz0wQ7sMPR9am6JIvBDmlhKg2TWKfDOwa0Uvtnrx6PNNBEN5Vtoi60MV2Z0ESgM8Y3eYjBlPRyKn",
+							"protocol": "https",
+							"host": [
+								"test",
+								"salesforce",
+								"com"
+							],
+							"path": [
+								"login",
+								"aouth2",
+								"code",
+								"reg-client"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "uofzL228225E0X0y7mVL-BU2xt9TRNE_lqPaj_uadXSMZuBvJ_DKFz0wQ7sMPR9am6JIvBDmlhKg2TWKfDOwa0Uvtnrx6PNNBEN5Vtoi60MV2Z0ESgM8Y3eYjBlPRyKn"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "code to access token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "uofzL228225E0X0y7mVL-BU2xt9TRNE_lqPaj_uadXSMZuBvJ_DKFz0wQ7sMPR9am6JIvBDmlhKg2TWKfDOwa0Uvtnrx6PNNBEN5Vtoi60MV2Z0ESgM8Y3eYjBlPRyKn",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://test.salesforce.com/login/aouth2/code/reg-client",
+									"type": "text"
+								},
+								{
+									"key": "code_verifier",
+									"value": "WFu3bWLPDI5Xlndz2g6aoDR50dI5suuuG5A-nQbxaZ4TR4ggha4gXOGNJU5HwkQgWRTACZptSkxONkldw68yZNNwZQS-OPiD8Hvc7sVXn1FeBz3Ymyh9C_X0wY74l6zE",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "client-id",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://auth-server:9000/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"auth-server"
+							],
+							"port": "9000",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh to access token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "grant_type",
+									"value": "refresh_token",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "public-client",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://test.salesforce.com/login/aouth2/code/public-client",
+									"type": "text"
+								},
+								{
+									"key": "refresh_token",
+									"value": "r9nXGfie6iYewFt8s7seh-97Nn7AtKfLnfwTOk33wnz17I_kKoOraJv6tFIoJwne5biKPiSAx22wEGvEme6CHHqiZ9gd9PAhm2iedZBd75K1uMbD2i-0TKYWbHxfrOVQ",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://auth-server:9000/oauth2/token",
+							"protocol": "http",
+							"host": [
+								"auth-server"
+							],
+							"port": "9000",
+							"path": [
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Public: register user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\":\"{{$randomFirstName}}\",\r\n    \"lastName\":\"{{$randomLastName}}\",\r\n    \"email\":\"bidder@yahoo.com\",\r\n    \"password\":\"Password\",\r\n    \"role\":\"BIDDER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2024/api/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post session",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"{{$randomProductName}}\",\r\n    \"description\":\"{{$randomWords}}\",\r\n    \"startTime\":\"{{$isoTimestamp}}\",\r\n    \"endTime\":\"{{$isoTimestamp}}\",\r\n    \"durationMinute\":10,\r\n    \"itemId\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all active session",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"{{$randomProductName}}\",\r\n    \"price\":\"{{$randomPrice}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find session specify id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"{{$randomProductName}}\",\r\n    \"description\":\"{{$randomWords}}\",\r\n    \"startTime\":\"{{$isoTimestamp}}\",\r\n    \"endTime\":\"{{$isoTimestamp}}\",\r\n    \"status\":\"ACTIVE\",\r\n    \"itemId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partial update session",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"startTime\":\"{{$isoTimestamp}}\",\r\n    \"durationMinute\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post bid in sessson",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":{{$randomPrice}}\r\n    // ,\"comment\":\"{{$randomPhrase}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions/1/bid",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions",
+						"1",
+						"bid"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find top bid by specify session",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"{{$randomProductName}}\",\r\n    \"description\":\"{{$randomWords}}\",\r\n    \"startTime\":\"{{$isoTimestamp}}\",\r\n    \"endTime\":\"{{$isoTimestamp}}\",\r\n    \"status\":\"ACTIVE\",\r\n    \"itemId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:2024/api/v1/sessions/1/top-bidder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"sessions",
+						"1",
+						"top-bidder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all bids belong to connected user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2024/api/v1/bids",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"bids"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all win bids belong to connected user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2024/api/v1/bids/win",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"bids",
+						"win"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all lost bids belong to connected user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:2024/api/v1/bids/lost",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "2024",
+					"path": [
+						"api",
+						"v1",
+						"bids",
+						"lost"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJraWQiOiIwYTNiNjE0My01YzA1LTRiZjctOWJkZS0xZjc3ZTU4NWU1ODEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImF1ZCI6ImNsaWVudC1pZCIsIm5iZiI6MTcxOTg0MDg5Niwic2NvcGUiOlsib3BlbmlkIl0sImlzcyI6Imh0dHA6Ly9hdXRoLXNlcnZlcjo5MDAwIiwiZXhwIjoxNzE5ODQxMTk2LCJpYXQiOjE3MTk4NDA4OTYsImp0aSI6IjVhYTFhYmQ2LWFjYWEtNDY1ZS05NzdkLWY3ZjBmZTI1YmIyYSJ9.tzg2JR_nmsmLim09GObMPqe1VcyHWGYSHO9xavKHTvwFr_kZkMywIEQC6OquJinVPXduw1Rx9FgauNRAhL98NcO-TgiO4U9kwMOZ-Wt_NwOBlZMIb1K8_8URxt98JKekUQNsyLIoD1G_Tjh-QRV9JReNwUrfcrPQ7SBgtP3baZCqnvxJ0HKIPAhoLbG4lXn3y0TymlvHjfqrRWTFjbmWu4XBHoUkQU15yUGGSjGUsjrFulygBXnBc-rw8vl87PfoALYNQcYub2lF5jvL5AiER2QHnn-qT3zsS33Jgx0NbMNFVtpr2y9rna-kUnxB-71-IKCwe-g5gjplDLFnjbH9VA",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
