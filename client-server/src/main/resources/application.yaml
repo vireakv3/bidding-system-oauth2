@@ -1,0 +1,29 @@
+resourceServerUrl: http://localhost:2024
+logging:
+  level:
+    org.springframework.security: DEBUG
+server:
+  port: 8080
+spring:
+  freemarker:
+    template-loader-path: classpath:/templates/
+    suffix: .ftl
+    expose-request-attributes: true
+    expose-session-attributes: true
+    expose-spring-macro-helpers: true
+  output.ansi.enabled: ALWAYS
+  security:
+    oauth2:
+      client:
+        provider:
+          spring:
+            issuer-uri: http://auth-server:9000
+        registration:
+          reg-client:
+            provider: spring
+            client-id: client-id
+            client-secret: client-secret
+            authorization-grant-type: authorization_code
+            client-authentication-method: none
+            redirect-uri: "http://localhost:8080/login/oauth2/code/reg-client"
+            scope: profile,openid

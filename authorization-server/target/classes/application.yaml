@@ -1,0 +1,43 @@
+logging:
+  level:
+    root: INFO
+    org.springframework.security: DEBUG
+    org.springframework.web: INFO
+    org.springframework.security.oauth2: INFO
+server:
+  port: 9000
+spring:
+  application:
+    name: 'authorization-server'
+    version: '0.0.1-SNAPSHOT'
+  datasource:
+    url: jdbc:mysql://localhost:3306/bidding_system
+    username: root
+    #password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+#  security:
+#    oauth2:
+#      authorizationserver:
+#        issuer: http://auth-server:9000
+#        client:
+#          articles-client:
+#            registration:
+#              client-id: articles-client
+#              client-secret: "{noop}secret"
+#              client-name: Articles Client
+#              client-authentication-methods:
+#                - client_secret_basic
+#              authorization-grant-types:
+#                - authorization_code
+#                - refresh_token
+#              redirect-uris:
+#                - http://127.0.0.1:2024/login/oauth2/code/articles-client-oidc
+#                - http://127.0.0.1:2024/authorized
+#              scopes:
+#                - openid
+#                - articles.read
