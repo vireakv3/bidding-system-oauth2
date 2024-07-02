@@ -57,3 +57,11 @@ This project serves as the authorization server for our application.
    redirect_uri:https://test.salesforce.com/login/aouth2/code/public-client
    refresh_token:[exact_refresh_token_from_response]
    client_id:client-id
+  
+- Sample Screenshots
+  <img width="958" alt="logindemo" src="https://github.com/vireakv3/bidding-system-oauth2/assets/120448643/956020b8-673b-45b3-b1b1-081da58c8efa">
+  <img width="959" alt="index" src="https://github.com/vireakv3/bidding-system-oauth2/assets/120448643/03c87fd6-1dcb-4822-a089-d3ff16a735ee">
+  <img width="959" alt="joinsession postbid" src="https://github.com/vireakv3/bidding-system-oauth2/assets/120448643/fab954ce-6442-4226-89a1-9f4cf949c63a">
+  <img width="959" alt="losthistory" src="https://github.com/vireakv3/bidding-system-oauth2/assets/120448643/bce29508-eb26-4c3f-a84b-f4254971bc16">
+  <img width="958" alt="winhistory" src="https://github.com/vireakv3/bidding-system-oauth2/assets/120448643/6a910b4b-f9aa-4a08-bd1f-39a924e860d7">
+- Only when the session is CLOSED so the bids coulbd be set as Win or Lost. The session is CLOSED when startDatetime + Duration < Current Datetime. If the session still not CLOSED so the bids can't identify as win/lost.
